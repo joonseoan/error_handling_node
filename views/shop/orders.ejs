@@ -1,0 +1,33 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <% console.log('orders ====> ', orders) %>
+            <% if (orders.length === 0) { %>
+                <h1>Nothing there!</h1>
+            <% } else { %>
+                <ul>
+
+                    <% console.log('orders in ejs: ========', orders); %>
+                    <% orders.forEach(order => { %>
+                        <li>
+                            <h1># <%= order._id %></h1>
+                            <ul>
+                                <% order.products.forEach(item => { %>
+                                    <% console.log('item in ejs: ========', item); %>
+
+                                    <li>
+                                        TITLE: <%= item.product.title %>, 
+                                        QTY : <%= item.qty %> 
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        </li>
+
+                    <% }) %>
+                </ul>
+            <% } %>    
+        </main>
+        <%- include('../includes/end.ejs') %>
